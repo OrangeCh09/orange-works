@@ -16,7 +16,7 @@
             background-color: #f5f5f5;
             color: #333;
             text-align: center;
-            padding-bottom: 80px; /* Espacio para que el botón flotante no tape contenido */
+            padding-bottom: 120px; /* Espacio extra abajo para que no tape el contenido el botón y el GIF */
         }
 
         /* Encabezado */
@@ -45,52 +45,106 @@
             font-weight: 500;
         }
 
-        /* Contenedor Principal (Galería de Fotos) */
-        .galeria {
+        /* Contenedor Principal (Destacados) */
+        .destacados {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
             max-width: 1000px;
-            margin: 40px auto;
+            margin: 40px auto 20px auto;
             padding: 0 20px;
         }
 
-        /* Tarjetas de fotos de la galería */
-        .item-galeria {
+        .item-destacado {
             background: white;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            flex: 1 1 350px; /* Hace que se adapten al tamaño de pantalla */
+            flex: 1 1 350px;
             max-width: 450px;
-            transition: transform 0.3s ease;
         }
 
-        .item-galeria:hover {
-            transform: translateY(-5px); /* Efecto interactivo al pasar el mouse */
-        }
-
-        .item-galeria img {
+        .item-destacado img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP */
-        .btn-whatsapp {
+        /* Título de la sección del Carrusel */
+        .seccion-titulo {
+            font-size: 1.8rem;
+            margin: 40px 0 10px 0;
+            color: #222;
+        }
+
+        /* --- CARRUSEL AUTOMÁTICO --- */
+        .carrusel-contenedor {
+            max-width: 500px;
+            width: 90%;
+            height: 350px; /* Altura fija para que el carrusel sea uniforme */
+            margin: 0 auto 50px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            background: #fff;
+        }
+
+        .carrusel-diapositiva {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out; /* Transición suave */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carrusel-diapositiva.activa {
+            opacity: 1;
+            position: relative;
+        }
+
+        .carrusel-diapositiva img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta la imagen al contenedor sin deformarla */
+        }
+
+        /* --- ZONA FLOTANTE DERECHA (Naranja + WhatsApp) --- */
+        .zona-flotante {
             position: fixed;
-            width: 60px;
-            height: 60px;
             bottom: 30px;
             right: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        /* Naranja Bailando */
+        .naranja-bailando {
+            width: 85px; /* Tamaño vistoso */
+            height: auto;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+            pointer-events: none; /* Evita que estorbe al hacer clic */
+        }
+
+        /* Botón de WhatsApp más grande */
+        .btn-whatsapp {
+            width: 75px; /* Más grande (antes era 60px) */
+            height: 75px;
             background-color: #25d366;
             color: white;
-            border-radius: 50px;
+            border-radius: 50%;
             text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 100;
+            font-size: 38px; /* Icono más grande */
+            box-shadow: 2px 4px 12px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -107,32 +161,92 @@
 <body>
 
     <header>
-        <!-- Logo de Orange Works -->
         <img src="images/OrangeNB.png" alt="Logo de Orange Works" class="logo">
         <h1>Orange Works</h1>
         <p>Maquetas • Impresiones • Modelos Anatómicos</p>
     </header>
 
-    <!-- Galería organizada con imágenes alineadas y más compactas -->
-    <main class="galeria">
-        <div class="item-galeria">
-            <img src="images/Promocional.jpeg" alt="Anuncio Promocional de Orange Works">
+    <!-- Imágenes Principales -->
+    <main class="destacados">
+        <div class="item-destacado">
+            <img src="images/Promocional.jpeg" alt="Anuncio Promocional">
         </div>
-
-        <div class="item-galeria">
-            <img src="images/Venopunción.jpeg" alt="Modelo Anatómico para práctica de Venopunción">
+        <div class="item-destacado">
+            <img src="images/Venopunción.jpeg" alt="Modelo de Venopunción">
         </div>
     </main>
 
-    <!-- BOTÓN DE WHATSAPP FLOTANTE -->
-    <!-- Reemplaza el número 593963171117 si necesitas cambiar de número (593 es código de Ecuador) -->
-    <a href="https://wa.me/593963171117?text=¡Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20modelos%20anatómicos%20y%20maquetas." 
-       class="btn-whatsapp" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       title="Escríbenos por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Título Galería de Trabajos -->
+    <h2 class="seccion-titulo">Galería de Trabajos</h2>
+
+    <!-- Carrusel de imágenes de la 1 a la 9 -->
+    <div class="carrusel-contenedor">
+        <div class="carrusel-diapositiva activa">
+            <img src="images/1.jpeg" alt="Trabajo 1">
+        </div>
+        <div class="carrusel-diapositiva">
+            <img src="images/2.jpeg" alt="Trabajo 2">
+        </div>
+        <div class="carrusel-diapositiva">
+            <img src="images/3.jpeg" alt="Trabajo 3">
+        </div>
+        <div class="carrusel-diapositiva">
+            <img src="images/4.jpeg" alt="Trabajo 4">
+        </div>
+        <div class="carrusel-diapositiva">
+            <img src="images/5.jpeg" alt="Trabajo 5">
+        </div>
+        <div class="carrusel-diapositiva">
+            <img src="images/6.jpeg" alt="Trabajo 6">
+        </div>
+        <div class="carrusel-diapositiva">
+            <img src="images/7.jpeg" alt="Trabajo 7">
+        </div>
+        <div class="carrusel-diapositiva">
+            <img src="images/8.jpeg" alt="Trabajo 8">
+        </div>
+        <div class="carrusel-diapositiva">
+            <img src="images/9.jpeg" alt="Trabajo 9">
+        </div>
+    </div>
+
+    <!-- ZONA FLOTANTE (Naranja Bailando + WhatsApp) -->
+    <div class="zona-flotante">
+        <!-- GIF de la Naranja Bailando -->
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZ3MxZ29ocHNlM3RsMjdiNmw1eDRsam5jeXB1cTVxdWpqNHcxMDFlbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l2JJHEW1lToNnJzxe/source.gif" 
+             alt="Naranja Bailando" 
+             class="naranja-bailando">
+             
+        <!-- Botón Gigante de WhatsApp -->
+        <a href="https://wa.me/593963171117?text=¡Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20modelos%20anatómicos%20y%20maquetas." 
+           class="btn-whatsapp" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           title="Escríbenos por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Script en JavaScript para controlar el cambio de imágenes -->
+    <script>
+        let indiceActual = 0;
+        const diapositivas = document.querySelectorAll('.carrusel-diapositiva');
+        const totalDiapositivas = diapositivas.length;
+
+        function mostrarSiguienteDiapositiva() {
+            // Quitamos la clase 'activa' a la imagen actual
+            diapositivas[indiceActual].classList.remove('activa');
+            
+            // Calculamos el índice de la siguiente imagen
+            indiceActual = (indiceActual + 1) % totalDiapositivas;
+            
+            // Añadimos la clase 'activa' a la nueva imagen
+            diapositivas[indiceActual].classList.add('activa');
+        }
+
+        // Cambia de imagen automáticamente cada 4000 milisegundos (4 segundos)
+        setInterval(mostrarSiguienteDiapositiva, 4000);
+    </script>
 
 </body>
 </html>
