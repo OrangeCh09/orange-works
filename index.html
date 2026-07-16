@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orange Works - Maquetas y Modelos Anatómicos</title>
 
+    <!-- Importamos el set de iconos para el logo de WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         /* Reset básico y fondo */
         body {
@@ -13,6 +16,7 @@
             background-color: #f5f5f5;
             color: #333;
             text-align: center;
+            padding-bottom: 80px; /* Espacio para que el botón flotante no tape contenido */
         }
 
         /* Encabezado */
@@ -23,14 +27,14 @@
         }
 
         .logo {
-            width: 220px;
+            width: 180px;
             max-width: 100%;
             height: auto;
         }
 
         header h1 {
             margin: 15px 0 5px 0;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #222;
         }
 
@@ -38,46 +42,97 @@
             margin: 0;
             color: #666;
             font-size: 1.1rem;
+            font-weight: 500;
         }
 
-        /* Contenedor principal */
-        main {
-            padding: 20px;
+        /* Contenedor Principal (Galería de Fotos) */
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        /* Imágenes de contenido */
-        .anuncio {
-            width: 100%;
-            max-width: 900px;
-            margin: 30px auto;
-            display: block;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .referencia {
-            width: 100%;
-            max-width: 500px;
-            margin: 30px auto;
-            display: block;
+        /* Tarjetas de fotos de la galería */
+        .item-galeria {
+            background: white;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            flex: 1 1 350px; /* Hace que se adapten al tamaño de pantalla */
+            max-width: 450px;
+            transition: transform 0.3s ease;
+        }
+
+        .item-galeria:hover {
+            transform: translateY(-5px); /* Efecto interactivo al pasar el mouse */
+        }
+
+        .item-galeria img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .btn-whatsapp {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
 
     <header>
+        <!-- Logo de Orange Works -->
         <img src="images/OrangeNB.png" alt="Logo de Orange Works" class="logo">
         <h1>Orange Works</h1>
         <p>Maquetas • Impresiones • Modelos Anatómicos</p>
     </header>
 
-    <main>
-        <img src="images/Promocional.jpeg" alt="Anuncio Promocional de Orange Works" class="anuncio">
+    <!-- Galería organizada con imágenes alineadas y más compactas -->
+    <main class="galeria">
+        <div class="item-galeria">
+            <img src="images/Promocional.jpeg" alt="Anuncio Promocional de Orange Works">
+        </div>
 
-        <img src="images/Venopunción.jpeg" alt="Modelo Anatómico para práctica de Venopunción" class="referencia">
+        <div class="item-galeria">
+            <img src="images/Venopunción.jpeg" alt="Modelo Anatómico para práctica de Venopunción">
+        </div>
     </main>
+
+    <!-- BOTÓN DE WHATSAPP FLOTANTE -->
+    <!-- Reemplaza el número 593963171117 si necesitas cambiar de número (593 es código de Ecuador) -->
+    <a href="https://wa.me/593963171117?text=¡Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20modelos%20anatómicos%20y%20maquetas." 
+       class="btn-whatsapp" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       title="Escríbenos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
