@@ -1,63 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange Works - Maquetas y Modelos Anatómicos</title>
 
-<title>Orange Works</title>
+    <style>
+        /* Reset básico y fondo */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+        }
 
-<style>
-body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f5f5f5;
-    text-align:center;
-}
+        /* Encabezado */
+        header {
+            background: white;
+            padding: 40px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
 
-header{
-    background:white;
-    padding:40px;
-    box-shadow:0 2px 10px rgba(0,0,0,.15);
-}
+        .logo {
+            width: 220px;
+            max-width: 100%;
+            height: auto;
+        }
 
-.logo{
-    width:220px;
-}
+        header h1 {
+            margin: 15px 0 5px 0;
+            font-size: 2rem;
+            color: #222;
+        }
 
-.anuncio{
-    width:90%;
-    max-width:900px;
-    margin:40px auto;
-    display:block;
-    border-radius:20px;
-}
+        header p {
+            margin: 0;
+            color: #666;
+            font-size: 1.1rem;
+        }
 
-.referencia{
-    width:90%;
-    max-width:500px;
-    margin:40px auto;
-    display:block;
-    border-radius:15px;
-}
-</style>
+        /* Contenedor principal */
+        main {
+            padding: 20px;
+        }
 
+        /* Imágenes de contenido */
+        .anuncio {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .referencia {
+            width: 100%;
+            max-width: 500px;
+            margin: 30px auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
+    <header>
+        <img src="images/OrangeNB.png" alt="Logo de Orange Works" class="logo">
+        <h1>Orange Works</h1>
+        <p>Maquetas • Impresiones • Modelos Anatómicos</p>
+    </header>
 
-<img src="images/OrangeNB.png" class="logo">
+    <main>
+        <img src="images/Promocional.jpeg" alt="Anuncio Promocional de Orange Works" class="anuncio">
 
-<h1>Orange Works</h1>
-
-<p>Maquetas • Impresiones • Modelos Anatómicos</p>
-
-</header>
-
-<img src="images/Promocional.jpeg" class="anuncio">
-
-<img src="images/Venopunción.jpeg" class="referencia">
+        <img src="images/Venopunción.jpeg" alt="Modelo Anatómico para práctica de Venopunción" class="referencia">
+    </main>
 
 </body>
 </html>
