@@ -16,7 +16,7 @@
             background-color: #f5f5f5;
             color: #333;
             text-align: center;
-            padding-bottom: 120px; /* Espacio extra abajo para que no tape el contenido el botón y el GIF */
+            padding-bottom: 120px; /* Espacio extra abajo para que el botón y el GIF no tapen el contenido */
         }
 
         /* Encabezado */
@@ -82,7 +82,7 @@
         .carrusel-contenedor {
             max-width: 500px;
             width: 90%;
-            height: 350px; /* Altura fija para que el carrusel sea uniforme */
+            height: 350px; /* Altura fija para que todas las fotos se vean del mismo tamaño */
             margin: 0 auto 50px auto;
             position: relative;
             overflow: hidden;
@@ -98,7 +98,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.8s ease-in-out; /* Transición suave */
+            transition: opacity 0.8s ease-in-out; /* Desvanecimiento suave al cambiar de foto */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -112,10 +112,10 @@
         .carrusel-diapositiva img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ajusta la imagen al contenedor sin deformarla */
+            object-fit: cover; /* Ajusta la imagen para llenar el espacio sin estirarse feo */
         }
 
-        /* --- ZONA FLOTANTE DERECHA (Naranja + WhatsApp) --- */
+        /* --- ZONA FLOTANTE DERECHA (Naranja Bailando + WhatsApp) --- */
         .zona-flotante {
             position: fixed;
             bottom: 30px;
@@ -129,21 +129,21 @@
 
         /* Naranja Bailando */
         .naranja-bailando {
-            width: 85px; /* Tamaño vistoso */
+            width: 85px; /* Tamaño responsivo y muy visible */
             height: auto;
             filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
-            pointer-events: none; /* Evita que estorbe al hacer clic */
+            pointer-events: none; /* No interfiere al intentar hacer clic en la pantalla */
         }
 
-        /* Botón de WhatsApp más grande */
+        /* Botón de WhatsApp Gigante */
         .btn-whatsapp {
-            width: 75px; /* Más grande (antes era 60px) */
+            width: 75px; /* Tamaño ampliado */
             height: 75px;
             background-color: #25d366;
             color: white;
             border-radius: 50%;
             text-align: center;
-            font-size: 38px; /* Icono más grande */
+            font-size: 38px; /* Icono grande */
             box-shadow: 2px 4px 12px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
@@ -154,19 +154,20 @@
 
         .btn-whatsapp:hover {
             background-color: #128c7e;
-            transform: scale(1.1);
+            transform: scale(1.1); /* Se agranda un poquito al pasar el mouse por encima */
         }
     </style>
 </head>
 <body>
 
     <header>
+        <!-- Tu Logo -->
         <img src="images/OrangeNB.png" alt="Logo de Orange Works" class="logo">
         <h1>Orange Works</h1>
         <p>Maquetas • Impresiones • Modelos Anatómicos</p>
     </header>
 
-    <!-- Imágenes Principales -->
+    <!-- Tus dos imágenes principales -->
     <main class="destacados">
         <div class="item-destacado">
             <img src="images/Promocional.jpeg" alt="Anuncio Promocional">
@@ -176,10 +177,10 @@
         </div>
     </main>
 
-    <!-- Título Galería de Trabajos -->
+    <!-- Sección de tus 9 trabajos -->
     <h2 class="seccion-titulo">Galería de Trabajos</h2>
 
-    <!-- Carrusel de imágenes de la 1 a la 9 -->
+    <!-- Carrusel del 1 al 9 -->
     <div class="carrusel-contenedor">
         <div class="carrusel-diapositiva activa">
             <img src="images/1.jpeg" alt="Trabajo 1">
@@ -210,14 +211,14 @@
         </div>
     </div>
 
-    <!-- ZONA FLOTANTE (Naranja Bailando + WhatsApp) -->
+    <!-- ZONA DE CONTACTO FLOTANTE (Naranja Bailando + WhatsApp) -->
     <div class="zona-flotante">
-        <!-- GIF de la Naranja Bailando -->
+        <!-- El GIF que me enviaste de la Naranja Bailando -->
         <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZ3MxZ29ocHNlM3RsMjdiNmw1eDRsam5jeXB1cTVxdWpqNHcxMDFlbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l2JJHEW1lToNnJzxe/source.gif" 
              alt="Naranja Bailando" 
              class="naranja-bailando">
              
-        <!-- Botón Gigante de WhatsApp -->
+        <!-- Tu Botón Gigante de WhatsApp con tu número -->
         <a href="https://wa.me/593963171117?text=¡Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20modelos%20anatómicos%20y%20maquetas." 
            class="btn-whatsapp" 
            target="_blank" 
@@ -227,24 +228,24 @@
         </a>
     </div>
 
-    <!-- Script en JavaScript para controlar el cambio de imágenes -->
+    <!-- Motor de movimiento del Carrusel -->
     <script>
         let indiceActual = 0;
         const diapositivas = document.querySelectorAll('.carrusel-diapositiva');
         const totalDiapositivas = diapositivas.length;
 
         function mostrarSiguienteDiapositiva() {
-            // Quitamos la clase 'activa' a la imagen actual
+            // Quitamos la visibilidad a la foto anterior
             diapositivas[indiceActual].classList.remove('activa');
             
-            // Calculamos el índice de la siguiente imagen
+            // Pasamos a la siguiente foto
             indiceActual = (indiceActual + 1) % totalDiapositivas;
             
-            // Añadimos la clase 'activa' a la nueva imagen
+            // Hacemos visible la nueva foto
             diapositivas[indiceActual].classList.add('activa');
         }
 
-        // Cambia de imagen automáticamente cada 4000 milisegundos (4 segundos)
+        // Configurado a 4000ms (4 segundos) para una velocidad agradable
         setInterval(mostrarSiguienteDiapositiva, 4000);
     </script>
 
